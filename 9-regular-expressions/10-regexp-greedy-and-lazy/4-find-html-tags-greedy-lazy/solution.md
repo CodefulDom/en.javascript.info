@@ -1,12 +1,10 @@
-# solution
 
 The solution is `pattern:<[^<>]+>`.
 
-\`\`\`js run let regexp = /&lt;+&gt;/g;
+```js run
+let regexp = /<[^<>]+>/g;
 
-let str = '&lt;&gt;   ';
+let str = '<> <a href="/"> <input type="radio" checked> <b>';
 
-alert\( str.match\(regexp\) \); // '', '', ''
-
-\`\`\`
-
+alert( str.match(regexp) ); // '<a href="/">', '<input type="radio" checked>', '<b>'
+```

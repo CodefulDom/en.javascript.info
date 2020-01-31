@@ -6,7 +6,7 @@ Write a regular expression that inserts `<h1>Hello</h1>` immediately after `<bod
 
 For instance:
 
-```javascript
+```js
 let regexp = /your regular expression/;
 
 let str = `
@@ -21,12 +21,10 @@ str = str.replace(regexp, `<h1>Hello</h1>`);
 ```
 
 After that the value of `str` should be:
-
-```markup
+```html
 <html>
   <body style="height: 200px"><h1>Hello</h1>
   ...
   </body>
 </html>
 ```
-

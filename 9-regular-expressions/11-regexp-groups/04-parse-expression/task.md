@@ -2,10 +2,10 @@
 
 An arithmetical expression consists of 2 numbers and an operator between them, for instance:
 
-* `1 + 2`
-* `1.2 * 3.4`
-* `-3 / -6`
-* `-2 - 2`
+- `1 + 2`
+- `1.2 * 3.4`
+- `-3 / -6`
+- `-2 - 2`
 
 The operator is one of: `"+"`, `"-"`, `"*"` or `"/"`.
 
@@ -19,11 +19,10 @@ Create a function `parse(expr)` that takes an expression and returns an array of
 
 For example:
 
-```javascript
+```js
 let [a, op, b] = parse("1.2 * 3.4");
 
 alert(a); // 1.2
 alert(op); // *
 alert(b); // 3.4
 ```
-

@@ -1,3 +1,4 @@
+
 # Sticky flag "y", searching at position
 
 The flag `pattern:y` allows to perform the search at the given position in the source string.
@@ -26,19 +27,27 @@ When a regexp is created, its `lastIndex` is `0`.
 
 So, successive calls to `regexp.exec(str)` return matches one after another.
 
-An example \(with flag `pattern:g`\):
+An example (with flag `pattern:g`):
 
-\`\`\`js run let str = 'let varName';
+```js run
+let str = 'let varName';
 
-let regexp = /\w+/g; alert\(regexp.lastIndex\); // 0 \(initially lastIndex=0\)
+let regexp = /\w+/g;
+alert(regexp.lastIndex); // 0 (initially lastIndex=0)
 
-let word1 = regexp.exec\(str\); alert\(word1\[0\]\); // let \(1st word\) alert\(regexp.lastIndex\); // 3 \(position after the match\)
+let word1 = regexp.exec(str);
+alert(word1[0]); // let (1st word)
+alert(regexp.lastIndex); // 3 (position after the match)
 
-let word2 = regexp.exec\(str\); alert\(word2\[0\]\); // varName \(2nd word\) alert\(regexp.lastIndex\); // 11 \(position after the match\)
+let word2 = regexp.exec(str);
+alert(word2[0]); // varName (2nd word)
+alert(regexp.lastIndex); // 11 (position after the match)
 
-let word3 = regexp.exec\(str\); alert\(word3\); // null \(no more matches\) alert\(regexp.lastIndex\); // 0 \(resets at search end\)
+let word3 = regexp.exec(str);
+alert(word3); // null (no more matches)
+alert(regexp.lastIndex); // 0 (resets at search end)
+```
 
-```text
 Every match is returned as an array with groups and additional properties.
 
 We can get all matches in the loop:
@@ -62,15 +71,19 @@ Unlike other methods, we can set our own `lastIndex`, to start the search from t
 
 For instance, let's find a word, starting from position `4`:
 
-\`\`\`js run let str = 'let varName = "value"';
+```js run
+let str = 'let varName = "value"';
 
 let regexp = /\w+/g; // without flag "g", property lastIndex is ignored
 
-_!_ regexp.lastIndex = 4; _/!_
+*!*
+regexp.lastIndex = 4;
+*/!*
 
-let word = regexp.exec\(str\); alert\(word\); // varName
+let word = regexp.exec(str);
+alert(word); // varName
+```
 
-```text
 We performed a search of `pattern:\w+`, starting from position `regexp.lastIndex = 4`.
 
 Please note: the search starts at position `lastIndex` and then goes further. If there's no word at position `lastIndex`, but it's somewhere after it, then it will be found:
@@ -95,19 +108,20 @@ alert(word.index); // 4
 
 Here's the same search with flag `pattern:y`:
 
-\`\`\`js run let str = 'let varName = "value"';
+```js run
+let str = 'let varName = "value"';
 
 let regexp = /\w+/y;
 
-regexp.lastIndex = 3; alert\( regexp.exec\(str\) \); // null \(there's a space at position 3, not a word\)
+regexp.lastIndex = 3;
+alert( regexp.exec(str) ); // null (there's a space at position 3, not a word)
 
-regexp.lastIndex = 4; alert\( regexp.exec\(str\) \); // varName \(word at position 4\)
+regexp.lastIndex = 4;
+alert( regexp.exec(str) ); // varName (word at position 4)
+```
 
-\`\`\`
-
-As we can see, regexp `pattern:/\w+/y` doesn't match at position `3` \(unlike the flag `pattern:g`\), but matches at position `4`.
+As we can see, regexp `pattern:/\w+/y` doesn't match at position `3` (unlike the flag  `pattern:g`), but matches at position `4`.
 
 Imagine, we have a long text, and there are no matches in it, at all. Then searching with flag `pattern:g` will go till the end of the text, and this will take significantly more time than the search with flag `pattern:y`.
 
 In such tasks like lexical analysis, there are usually many searches at an exact position. Using flag `pattern:y` is the key for a good performance.
-

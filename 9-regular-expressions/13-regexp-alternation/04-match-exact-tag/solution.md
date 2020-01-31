@@ -1,4 +1,3 @@
-# solution
 
 The pattern start is obvious: `pattern:<style`.
 
@@ -10,9 +9,8 @@ In the regexp language: `pattern:<style(>|\s.*?>)`.
 
 In action:
 
-\`\`\`js run let regexp = /\|\s.\*?&gt;\)/g;
+```js run
+let regexp = /<style(>|\s.*?>)/g;
 
-alert\( '  '.match\(regexp\) \); // , 
-
-\`\`\`
-
+alert( '<style> <styler> <style test="...">'.match(regexp) ); // <style>, <style test="...">
+```

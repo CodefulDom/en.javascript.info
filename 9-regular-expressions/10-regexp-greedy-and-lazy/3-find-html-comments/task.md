@@ -2,7 +2,7 @@
 
 Find all HTML comments in the text:
 
-```javascript
+```js
 let regexp = /your regexp/g;
 
 let str = `... <!-- My -- comment
@@ -11,4 +11,3 @@ let str = `... <!-- My -- comment
 
 alert( str.match(regexp) ); // '<!-- My -- comment \n test -->', '<!---->'
 ```
-

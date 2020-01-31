@@ -4,8 +4,6 @@ description: Welcome to Web Engineering Bootcamp
 
 # The Modern JavaScript Tutorial
 
-My name is Dom and this is the resource that 
-
 This repository hosts the English content of the Modern JavaScript Tutorial, published at [https://javascript.info](https://javascript.info).
 
 ## Translations
@@ -27,8 +25,6 @@ The list of contributors is available at [https://javascript.info/about\#contrib
 ## Structure
 
 Every chapter, article or a task has its folder.
-
-The folder is named like `N-url`, where `N` is a number for the sorting purposes and `url` is the URL part with title of the material.
 
 The type of the material is defined by the file inside the folder:
 

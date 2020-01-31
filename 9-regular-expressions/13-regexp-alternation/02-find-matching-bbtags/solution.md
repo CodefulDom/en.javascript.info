@@ -1,4 +1,3 @@
-# solution
 
 Opening tag is `pattern:\[(b|url|quote)\]`.
 
@@ -8,13 +7,17 @@ The full pattern: `pattern:\[(b|url|quote)\].*?\[/\1\]`.
 
 In action:
 
-\`\`\`js run let regexp = /\[\(b\|url\|quote\)\].\*?\[\/\1\]/gs;
+```js run
+let regexp = /\[(b|url|quote)\].*?\[\/\1\]/gs;
 
-let str = `[b]hello![/b] [quote] [url]http://google.com[/url] [/quote]`;
+let str = `
+  [b]hello![/b]
+  [quote]
+    [url]http://google.com[/url]
+  [/quote]
+`;
 
-alert\( str.match\(regexp\) \); // \[b\]hello!\[/b\],\[quote\]\[url\][http://google.com\[/url\]\[/quote](http://google.com[/url][/quote)\]
-
-\`\`\`
+alert( str.match(regexp) ); // [b]hello![/b],[quote][url]http://google.com[/url][/quote]
+```
 
 Please note that besides escaping `pattern:[` and `pattern:]`, we had to escape a slash for the closing tag `pattern:[\/\1]`, because normally the slash closes the pattern.
-

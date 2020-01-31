@@ -4,11 +4,10 @@ Write a regexp that looks for all decimal numbers including integer ones, with t
 
 An example of use:
 
-```javascript
+```js
 let regexp = /your regexp/g;
 
 let str = "-1.5 0 2 -123.4.";
 
 alert( str.match(regexp) ); // -1.5, 0, 2, -123.4
 ```
-

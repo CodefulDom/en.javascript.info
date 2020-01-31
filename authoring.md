@@ -34,5 +34,7 @@ The title is auto-inserted from the referenced article. That has the benefit of 
 
 ## TODO
 
-Ask @iliakan to for more details.
+Ask @codefuldom for info
+
+
 

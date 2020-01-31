@@ -8,21 +8,22 @@ Let's take the following task as an example.
 
 We have a text and need to replace all quotes `"..."` with guillemet marks: `«...»`. They are preferred for typography in many countries.
 
-For instance: `"Hello, world"` should become `«Hello, world»`. There exist other quotes, such as `„Witam, świat!”` \(Polish\) or `「你好，世界」` \(Chinese\), but for our task let's choose `«...»`.
+For instance: `"Hello, world"` should become `«Hello, world»`. There exist other quotes, such as `„Witam, świat!”` (Polish) or `「你好，世界」` (Chinese), but for our task let's choose `«...»`.
 
 The first thing to do is to locate quoted strings, and then we can replace them.
 
-A regular expression like `pattern:/".+"/g` \(a quote, then something, then the other quote\) may seem like a good fit, but it isn't!
+A regular expression like `pattern:/".+"/g` (a quote, then something, then the other quote) may seem like a good fit, but it isn't!
 
 Let's try it:
 
-\`\`\`js run let regexp = /".+"/g;
+```js run
+let regexp = /".+"/g;
 
 let str = 'a "witch" and her "broom" is one';
 
-alert\( str.match\(regexp\) \); // "witch" and her "broom"
+alert( str.match(regexp) ); // "witch" and her "broom"
+```
 
-```text
 ...We can see that it works not as intended!
 
 Instead of finding two matches `match:"witch"` and `match:"broom"`, it finds one: `match:"witch" and her "broom"`.
@@ -115,31 +116,29 @@ To clearly understand the change, let's trace the search step by step.
 
 1. The first step is the same: it finds the pattern start `pattern:'"'` at the 3rd position:
 
-   ![](../../.gitbook/assets/witch_greedy1.svg)
+    ![](witch_greedy1.svg)
 
 2. The next step is also similar: the engine finds a match for the dot `pattern:'.'`:
 
-   ![](../../.gitbook/assets/witch_greedy2.svg)
+    ![](witch_greedy2.svg)
 
-3. And now the search goes differently. Because we have a lazy mode for `pattern:+?`, the engine doesn't try to match a dot one more time, but stops and tries to match the rest of the pattern `pattern:'"'` right now:
+3. And now the search goes differently. Because we have a lazy mode for `pattern:+?`, the engine doesn't try to match a dot one more time, but stops and tries to match the rest of the pattern  `pattern:'"'` right now:
 
-   ![](../../.gitbook/assets/witch_lazy3.svg)
+    ![](witch_lazy3.svg)
 
-   If there were a quote there, then the search would end, but there's `'i'`, so there's no match.
-
+    If there were a quote there, then the search would end, but there's `'i'`, so there's no match.
 4. Then the regular expression engine increases the number of repetitions for the dot and tries one more time:
 
-   ![](../../.gitbook/assets/witch_lazy4.svg)
+    ![](witch_lazy4.svg)
 
-   Failure again. Then the number of repetitions is increased again and again...
-
+    Failure again. Then the number of repetitions is increased again and again...
 5. ...Till the match for the rest of the pattern is found:
 
-   ![](../../.gitbook/assets/witch_lazy5.svg)
+    ![](witch_lazy5.svg)
 
 6. The next search starts from the end of the current match and yield one more result:
 
-   ![](../../.gitbook/assets/witch_lazy6.svg)
+    ![](witch_lazy6.svg)
 
 In this example we saw how the lazy mode works for `pattern:+?`. Quantifiers `pattern:*?` and `pattern:??` work the similar way -- the regexp engine increases the number of repetitions only if the rest of the pattern can't match on the given position.
 
@@ -149,9 +148,10 @@ Other quantifiers remain greedy.
 
 For instance:
 
-\`\`\`js run alert\( "123 456".match\(/\d+ \d+?/\) \); // 123 4
+```js run
+alert( "123 456".match(/\d+ \d+?/) ); // 123 4
+```
 
-```text
 1. The pattern `pattern:\d+` tries to match as many digits as it can (greedy mode), so it finds  `match:123` and stops, because the next character is a space `pattern:' '`.
 2. Then there's a space in the pattern, it matches.
 3. Then there's `pattern:\d+?`. The quantifier is in lazy mode, so it finds one digit `match:4` and tries to check if the rest of the pattern matches from there.
@@ -174,13 +174,14 @@ With regexps, there's often more than one way to do the same thing.
 
 In our case we can find quoted strings without lazy mode using the regexp `pattern:"[^"]+"`:
 
-\`\`\`js run let regexp = /"+"/g;
+```js run
+let regexp = /"[^"]+"/g;
 
 let str = 'a "witch" and her "broom" is one';
 
-alert\( str.match\(regexp\) \); // witch, broom
+alert( str.match(regexp) ); // witch, broom
+```
 
-```text
 The regexp `pattern:"[^"]+"` gives correct results, because it looks for a quote `pattern:'"'` followed by one or more non-quotes `pattern:[^"]`, and then the closing quote.
 
 When the regexp engine looks for `pattern:[^"]+` it stops the repetitions when it meets the closing quote, and we're done.
@@ -208,11 +209,14 @@ alert( str.match(regexp) ); // <a href="link" class="doc">
 
 It worked. But let's see what happens if there are many links in the text?
 
-\`\`\`js run let str = '...... ...'; let regexp = //g;
+```js run
+let str = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
+let regexp = /<a href=".*" class="doc">/g;
 
-// Whoops! Two links in one match! alert\( str.match\(regexp\) \); // ... 
+// Whoops! Two links in one match!
+alert( str.match(regexp) ); // <a href="link1" class="doc">... <a href="link2" class="doc">
+```
 
-```text
 Now the result is wrong for the same reason as our "witches" example. The quantifier `pattern:.*` took too many characters.
 
 The match looks like this:
@@ -224,11 +228,14 @@ The match looks like this:
 
 Let's modify the pattern by making the quantifier `pattern:.*?` lazy:
 
-\`\`\`js run let str = '...... ...'; let regexp = //g;
+```js run
+let str = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
+let regexp = /<a href=".*?" class="doc">/g;
 
-// Works! alert\( str.match\(regexp\) \); // , 
+// Works!
+alert( str.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" class="doc">
+```
 
-```text
 Now it seems to work, there are two matches:
 
 ```html
@@ -238,11 +245,14 @@ Now it seems to work, there are two matches:
 
 ...But let's test it on one more text input:
 
-\`\`\`js run let str = '...... ...'; let regexp = //g;
+```js run
+let str = '...<a href="link1" class="wrong">... <p style="" class="doc">...';
+let regexp = /<a href=".*?" class="doc">/g;
 
-// Wrong match! alert\( str.match\(regexp\) \); // ... 
+// Wrong match!
+alert( str.match(regexp) ); // <a href="link1" class="wrong">... <p style="" class="doc">
+```
 
-```text
 Now it fails. The match includes not just a link, but also a lot of text after it, including `<p...>`.
 
 Why?
@@ -268,19 +278,24 @@ The correct variant can be: `pattern:href="[^"]*"`. It will take all characters 
 
 A working example:
 
-\`\`\`js run let str1 = '...... ...'; let str2 = '...... ...'; let regexp = /&lt;a href="\*" class="doc"&gt;/g;
+```js run
+let str1 = '...<a href="link1" class="wrong">... <p style="" class="doc">...';
+let str2 = '...<a href="link1" class="doc">... <a href="link2" class="doc">...';
+let regexp = /<a href="[^"]*" class="doc">/g;
 
-// Works! alert\( str1.match\(regexp\) \); // null, no matches, that's correct alert\( str2.match\(regexp\) \); // , 
-
-\`\`\`
+// Works!
+alert( str1.match(regexp) ); // null, no matches, that's correct
+alert( str2.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" class="doc">
+```
 
 ## Summary
 
 Quantifiers have two modes of work:
 
-Greedy : By default the regular expression engine tries to repeat the quantifier as many times as possible. For instance, `pattern:\d+` consumes all possible digits. When it becomes impossible to consume more \(no more digits or string end\), then it continues to match the rest of the pattern. If there's no match then it decreases the number of repetitions \(backtracks\) and tries again.
+Greedy
+: By default the regular expression engine tries to repeat the quantifier as many times as possible. For instance, `pattern:\d+` consumes all possible digits. When it becomes impossible to consume more (no more digits or string end), then it continues to match the rest of the pattern. If there's no match then it decreases the number of repetitions (backtracks) and tries again.
 
-Lazy : Enabled by the question mark `pattern:?` after the quantifier. The regexp engine tries to match the rest of the pattern before each repetition of the quantifier.
+Lazy
+: Enabled by the question mark `pattern:?` after the quantifier. The regexp engine tries to match the rest of the pattern before each repetition of the quantifier.
 
 As we've seen, the lazy mode is not a "panacea" from the greedy search. An alternative is a "fine-tuned" greedy search, with exclusions, as in the pattern `pattern:"[^"]+"`.
-

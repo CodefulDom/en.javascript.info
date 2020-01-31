@@ -6,10 +6,8 @@ You could note the following:
 
 let x=prompt\("x?",''\), n=prompt\("n?",''\) // &lt;-- technically possible, // but better make it 2 lines, also there's no spaces and missing ; if \(n&lt;0\) // &lt;- no spaces inside \(n &lt; 0\), and should be extra line above it { // &lt;- figure bracket on a separate line // below - long lines can be split into multiple lines for improved readability alert\(`Power ${n} is not supported, please enter an integer number greater than zero`\); } else // &lt;- could write it on a single line like "} else {" { alert\(pow\(x,n\)\) // no spaces and missing ; }
 
-```text
-The fixed variant:
-
-```js
+```javascript
+// The fixed variant:
 function pow(x, n) {
   let result = 1;
 

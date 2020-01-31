@@ -1,4 +1,3 @@
-# solution
 
 The regexp for an integer number is `pattern:\d+`.
 
@@ -6,13 +5,14 @@ We can exclude negatives by prepending it with the negative lookahead: `pattern:
 
 Although, if we try it now, we may notice one more "extra" result:
 
-\`\`\`js run let regexp = /\(?&lt;!-\)\d+/g;
+```js run
+let regexp = /(?<!-)\d+/g;
 
 let str = "0 12 -5 123 -18";
 
-console.log\( str.match\(regexp\) \); // 0, 12, 123, _!_8_/!_
+console.log( str.match(regexp) ); // 0, 12, 123, *!*8*/!*
+```
 
-```text
 As you can see, it matches `match:8`, from `subject:-18`. To exclude it, we need to ensure that the regexp starts matching a number not from the middle of another (non-matching) number.
 
 We can do it by specifying another negative lookbehind: `pattern:(?<!-)(?<!\d)\d+`. Now `pattern:(?<!\d)` ensures that a match does not start after another digit, just what we need.
@@ -26,4 +26,3 @@ let str = "0 12 -5 123 -18";
 
 alert( str.match(regexp) ); // 0, 12, 123
 ```
-
