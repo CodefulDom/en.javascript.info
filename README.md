@@ -4,23 +4,7 @@ description: Welcome to Web Engineering Bootcamp
 
 # The Modern JavaScript Tutorial
 
-This repository hosts the English content of the Modern JavaScript Tutorial, published at [https://javascript.info](https://javascript.info).
-
-## Translations
-
-We'd like to make the tutorial available in many languages. Please help us to translate.
-
-See [https://javascript.info/translate](https://javascript.info/translate) for the details.
-
-## Contributions
-
-We'd also like to collaborate on the tutorial with other people.
-
-Something's wrong? A topic is missing? Explain it to people, add as PR 👏
-
-**You can edit the text in any editor.** The tutorial uses enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at [https://github.com/javascript-tutorial/server](https://github.com/javascript-tutorial/server).
-
-The list of contributors is available at [https://javascript.info/about\#contributors](https://javascript.info/about#contributors).
+The JavaScript portion of the course comes from: [https://javascript.info](https://javascript.info).
 
 ## Structure
 
@@ -37,5 +21,5 @@ Each of these files starts from the `# Main header`.
 It's very easy to add something new.
 
 ♥  
-Ilya Kantor @iliakan
+@codefuldom
 
