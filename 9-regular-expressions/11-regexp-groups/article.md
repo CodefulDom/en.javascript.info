@@ -17,22 +17,19 @@ Without parentheses, the pattern `pattern:go+` means `subject:g` character, foll
 
 Parentheses group characters together, so `pattern:(go)+` means `match:go`, `match:gogo`, `match:gogogo` and so on.
 
-```js run
-alert( 'Gogogo now!'.match(/(go)+/i) ); // "Gogogo"
-```
+\`\`\`js run alert\( 'Gogogo now!'.match\(/\(go\)+/i\) \); // "Gogogo"
 
+```text
 ### Example: domain
 
 Let's make something more complex -- a regular expression to search for a website domain.
 
 For example:
-
-```
-mail.com
-users.mail.com
-smith.users.mail.com
 ```
 
+mail.com users.mail.com smith.users.mail.com
+
+```text
 As we can see, a domain consists of repeated words, a dot after each one except the last one.
 
 In regular expressions that's `pattern:(\w+\.)+\w+`:
@@ -55,12 +52,11 @@ The email format is: `name@domain`. Any word can be the name, hyphens and dots a
 
 The pattern:
 
-```js run
-let regexp = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
+\`\`\`js run let regexp = /\[-.\w\]+@\(\[\w-\]+.\)+\[\w-\]+/g;
 
-alert("my@mail.com @ his@site.com.uk".match(regexp)); // my@mail.com, his@site.com.uk
-```
+alert\("my@mail.com @ his@site.com.uk".match\(regexp\)\); // my@mail.com, his@site.com.uk
 
+```text
 That regexp is not perfect, but mostly works and helps to fix accidental mistypes. The only truly reliable check for an email can only be done by sending a letter.
 
 ## Parentheses contents in the match
@@ -101,24 +97,19 @@ For instance, when searching a tag in `subject:<span class="my">` we may be inte
 
 Let's add parentheses for them: `pattern:<(([a-z]+)\s*([^>]*))>`.
 
-Here's how they are numbered (left to right, by the opening paren):
+Here's how they are numbered \(left to right, by the opening paren\):
 
-![](regexp-nested-groups-pattern.svg)
+![](../../.gitbook/assets/regexp-nested-groups-pattern.svg)
 
 In action:
 
-```js run
-let str = '<span class="my">';
+\`\`\`js run let str = '';
 
-let regexp = /<(([a-z]+)\s*([^>]*))>/;
+let regexp = /&lt;\(\(\[a-z\]+\)\s_\(_\)\)&gt;/;
 
-let result = str.match(regexp);
-alert(result[0]); // <span class="my">
-alert(result[1]); // span class="my"
-alert(result[2]); // span
-alert(result[3]); // class="my"
-```
+let result = str.match\(regexp\); alert\(result\[0\]\); //  alert\(result\[1\]\); // span class="my" alert\(result\[2\]\); // span alert\(result\[3\]\); // class="my"
 
+```text
 The zero index of `result` always holds the full match.
 
 Then groups, numbered from left to right by an opening paren. The first group is returned as `result[1]`. Here it encloses the whole tag content.
@@ -150,15 +141,11 @@ The array has the length of `3`, but all groups are empty.
 
 And here's a more complex match for the string `subject:ac`:
 
-```js run
-let match = 'ac'.match(/a(z)?(c)?/)
+\`\`\`js run let match = 'ac'.match\(/a\(z\)?\(c\)?/\)
 
-alert( match.length ); // 3
-alert( match[0] ); // ac (whole match)
-alert( match[1] ); // undefined, because there's nothing for (z)?
-alert( match[2] ); // c
-```
+alert\( match.length \); // 3 alert\( match\[0\] \); // ac \(whole match\) alert\( match\[1\] \); // undefined, because there's nothing for \(z\)? alert\( match\[2\] \); // c
 
+```text
 The array length is permanent: `3`. But there's nothing for the group `pattern:(z)?`, so the result is `["ac", undefined, "c"]`.
 
 ## Searching for all matches with groups: matchAll
@@ -169,18 +156,17 @@ The method `matchAll` is not supported in old browsers.
 A polyfill may be required, such as <https://github.com/ljharb/String.prototype.matchAll>.
 ```
 
-When we search for all matches (flag `pattern:g`), the `match` method does not return contents for groups.
+When we search for all matches \(flag `pattern:g`\), the `match` method does not return contents for groups.
 
 For example, let's find all tags in a string:
 
-```js run
-let str = '<h1> <h2>';
+\`\`\`js run let str = ' ';
 
-let tags = str.match(/<(.*?)>/g);
+let tags = str.match\(/&lt;\(.\*?\)&gt;/g\);
 
-alert( tags ); // <h1>,<h2>
-```
+alert\( tags \); // ,
 
+```text
 The result is an array of matches, but without details about each of them. But in practice we usually need contents of capturing groups in the result.
 
 To get them, we should search using the method `str.matchAll(regexp)`.
@@ -209,39 +195,30 @@ alert(results[0]); // <h1>,h1 (1st tag)
 alert(results[1]); // <h2>,h2 (2nd tag)
 ```
 
-As we can see, the first difference is very important, as demonstrated in the line `(*)`. We can't get the match as `results[0]`, because that object isn't pseudoarray. We can turn it into a real `Array` using `Array.from`. There are more details about pseudoarrays and iterables in the article <info:iterable>.
+As we can see, the first difference is very important, as demonstrated in the line `(*)`. We can't get the match as `results[0]`, because that object isn't pseudoarray. We can turn it into a real `Array` using `Array.from`. There are more details about pseudoarrays and iterables in the article .
 
 There's no need in `Array.from` if we're looping over results:
 
-```js run
-let results = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
+\`\`\`js run let results = ' '.matchAll\(/&lt;\(.\*?\)&gt;/gi\);
 
-for(let result of results) {
-  alert(result);
-  // первый вывод: <h1>,h1
-  // второй: <h2>,h2
-}
-```
+for\(let result of results\) { alert\(result\); // первый вывод: ,h1 // второй: ,h2 }
 
+```text
 ...Or using destructuring:
 
 ```js
 let [tag1, tag2] = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
 ```
 
-Every match, returned by `matchAll`, has the same format as returned by `match` without flag `pattern:g`: it's an array with additional properties `index` (match index in the string) and `input` (source string):
+Every match, returned by `matchAll`, has the same format as returned by `match` without flag `pattern:g`: it's an array with additional properties `index` \(match index in the string\) and `input` \(source string\):
 
-```js run
-let results = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
+\`\`\`js run let results = ' '.matchAll\(/&lt;\(.\*?\)&gt;/gi\);
 
-let [tag1, tag2] = results;
+let \[tag1, tag2\] = results;
 
-alert( tag1[0] ); // <h1>
-alert( tag1[1] ); // h1
-alert( tag1.index ); // 0
-alert( tag1.input ); // <h1> <h2>
-```
+alert\( tag1\[0\] \); //  alert\( tag1\[1\] \); // h1 alert\( tag1.index \); // 0 alert\( tag1.input \); //  
 
+```text
 ```smart header="Why is a result of `matchAll` an iterable object, not an array?"
 Why is the method designed like that? The reason is simple - for the optimization.
 
@@ -260,19 +237,13 @@ That's done by putting `pattern:?<name>` immediately after the opening paren.
 
 For example, let's look for a date in the format "year-month-day":
 
-```js run
-*!*
-let dateRegexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/;
-*/!*
-let str = "2019-04-30";
+\`\`\`js run _!_ let dateRegexp = /\(?\[0-9\]{4}\)-\(?\[0-9\]{2}\)-\(?\[0-9\]{2}\)/; _/!_ let str = "2019-04-30";
 
-let groups = str.match(dateRegexp).groups;
+let groups = str.match\(dateRegexp\).groups;
 
-alert(groups.year); // 2019
-alert(groups.month); // 04
-alert(groups.day); // 30
-```
+alert\(groups.year\); // 2019 alert\(groups.month\); // 04 alert\(groups.day\); // 30
 
+```text
 As you can see, the groups reside in the `.groups` property of the match.
 
 To look for all dates, we can add flag `pattern:g`.
@@ -301,13 +272,11 @@ Method `str.replace(regexp, replacement)` that replaces all matches with `regexp
 
 For example,
 
-```js run
-let str = "John Bull";
-let regexp = /(\w+) (\w+)/;
+\`\`\`js run let str = "John Bull"; let regexp = /\(\w+\) \(\w+\)/;
 
-alert( str.replace(regexp, '$2, $1') ); // Bull, John
-```
+alert\( str.replace\(regexp, '$2, $1'\) \); // Bull, John
 
+```text
 For named parentheses the reference will be `pattern:$<name>`.
 
 For example, let's reformat dates from "year-month-day" to "day.month.year":
@@ -327,38 +296,34 @@ Sometimes we need parentheses to correctly apply a quantifier, but we don't want
 
 A group may be excluded by adding `pattern:?:` in the beginning.
 
-For instance, if we want to find `pattern:(go)+`, but don't want the parentheses contents (`go`) as a separate array item, we can write: `pattern:(?:go)+`.
+For instance, if we want to find `pattern:(go)+`, but don't want the parentheses contents \(`go`\) as a separate array item, we can write: `pattern:(?:go)+`.
 
 In the example below we only get the name `match:John` as a separate member of the match:
 
-```js run
-let str = "Gogogo John!";
+\`\`\`js run let str = "Gogogo John!";
 
-*!*
-// ?: exludes 'go' from capturing
-let regexp = /(?:go)+ (\w+)/i;
-*/!*
+_!_ // ?: exludes 'go' from capturing let regexp = /\(?:go\)+ \(\w+\)/i; _/!_
 
-let result = str.match(regexp);
+let result = str.match\(regexp\);
 
-alert( result[0] ); // Gogogo John (full match)
-alert( result[1] ); // John
-alert( result.length ); // 2 (no more items in the array)
-```
+alert\( result\[0\] \); // Gogogo John \(full match\) alert\( result\[1\] \); // John alert\( result.length \); // 2 \(no more items in the array\)
+
+\`\`\`
 
 ## Summary
 
 Parentheses group together a part of the regular expression, so that the quantifier applies to it as a whole.
 
-Parentheses groups are numbered left-to-right, and can optionally be named with  `(?<name>...)`.
+Parentheses groups are numbered left-to-right, and can optionally be named with `(?<name>...)`.
 
 The content, matched by a group, can be obtained in the results:
 
-- The method `str.match` returns capturing groups only without flag `pattern:g`.
-- The method `str.matchAll` always returns capturing groups.
+* The method `str.match` returns capturing groups only without flag `pattern:g`.
+* The method `str.matchAll` always returns capturing groups.
 
 If the parentheses have no name, then their contents is available in the match array by its number. Named parentheses are also available in the property `groups`.
 
 We can also use parentheses contents in the replacement string in `str.replace`: by the number `$n` or the name `$<name>`.
 
 A group may be excluded from numbering by adding `pattern:?:` in its start. That's used when we need to apply a quantifier to the whole group, but don't want it as a separate item in the results array. We also can't reference such parentheses in the replacement string.
+

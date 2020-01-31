@@ -1,3 +1,5 @@
+# solution
+
 A regexp for a number is: `pattern:-?\d+(\.\d+)?`. We created it in previous tasks.
 
 An operator is `pattern:[-+*/]`. The hyphen `pattern:-` goes first in the square brackets, because in the middle it would mean a character range, while we just want a character `-`.
@@ -8,21 +10,17 @@ We need a number, an operator, and then another number. And optional spaces betw
 
 The full regular expression: `pattern:-?\d+(\.\d+)?\s*[-+*/]\s*-?\d+(\.\d+)?`.
 
-It has 3 parts, with `pattern:\s*` between them:
-1. `pattern:-?\d+(\.\d+)?` - the first number,
-1. `pattern:[-+*/]` - the operator,
-1. `pattern:-?\d+(\.\d+)?` - the second number.
+It has 3 parts, with `pattern:\s*` between them: 1. `pattern:-?\d+(\.\d+)?` - the first number, 1. `pattern:[-+*/]` - the operator, 1. `pattern:-?\d+(\.\d+)?` - the second number.
 
 To make each of these parts a separate element of the result array, let's enclose them in parentheses: `pattern:(-?\d+(\.\d+)?)\s*([-+*/])\s*(-?\d+(\.\d+)?)`.
 
 In action:
 
-```js run
-let regexp = /(-?\d+(\.\d+)?)\s*([-+*\/])\s*(-?\d+(\.\d+)?)/;
+\`\`\`js run let regexp = /\(-?\d+\(.\d+\)?\)\s_\(\[-+_\/\]\)\s\*\(-?\d+\(.\d+\)?\)/;
 
-alert( "1.2 + 12".match(regexp) );
-```
+alert\( "1.2 + 12".match\(regexp\) \);
 
+```text
 The result includes:
 
 - `result[0] == "1.2 + 12"` (full match)
@@ -54,3 +52,4 @@ function parse(expr) {
 
 alert( parse("-1.23 * 3.45") );  // -1.23, *, 3.45
 ```
+

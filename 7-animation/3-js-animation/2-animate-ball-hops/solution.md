@@ -1,4 +1,6 @@
-In the task <info:task/animate-ball> we had only one property to animate. Now we need one more: `elem.style.left`.
+# solution
+
+In the task &lt;info:task/animate-ball&gt; we had only one property to animate. Now we need one more: `elem.style.left`.
 
 The horizontal coordinate changes by another law: it does not "bounce", but gradually increases shifting the ball to the right.
 
@@ -8,7 +10,7 @@ As the time function we could use `linear`, but something like `makeEaseOut(quad
 
 The code:
 
-```js
+```javascript
 let height = field.clientHeight - ball.clientHeight;
 let width = 100;
 
@@ -30,3 +32,4 @@ animate({
   }
 });
 ```
+

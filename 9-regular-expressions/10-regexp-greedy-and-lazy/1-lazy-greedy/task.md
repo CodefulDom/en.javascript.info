@@ -2,6 +2,7 @@
 
 What's the match here?
 
-```js
+```javascript
 "123 456".match(/\d+? \d+?/g) ); // ?
 ```
+

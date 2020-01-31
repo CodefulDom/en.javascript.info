@@ -1,5 +1,7 @@
+# solution
 
 CSS to animate both `width` and `height`:
+
 ```css
 /* original class */
 
@@ -15,3 +17,4 @@ CSS to animate both `width` and `height`:
 ```
 
 Please note that `transitionend` triggers two times -- once for every property. So if we don't perform an additional check then the message would show up 2 times.
+

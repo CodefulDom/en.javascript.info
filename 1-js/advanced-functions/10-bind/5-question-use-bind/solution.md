@@ -1,0 +1,33 @@
+# solution
+
+The error occurs because `ask` gets functions `loginOk/loginFail` without the object.
+
+When it calls them, they naturally assume `this=undefined`.
+
+Let's `bind` the context:
+
+\`\`\`js run function askPassword\(ok, fail\) { let password = prompt\("Password?", ''\); if \(password == "rockstar"\) ok\(\); else fail\(\); }
+
+let user = { name: 'John',
+
+loginOk\(\) { alert\(`${this.name} logged in`\); },
+
+loginFail\(\) { alert\(`${this.name} failed to log in`\); },
+
+};
+
+_!_ askPassword\(user.loginOk.bind\(user\), user.loginFail.bind\(user\)\); _/!_
+
+```text
+Now it works.
+
+An alternative solution could be:
+```js
+//...
+askPassword(() => user.loginOk(), () => user.loginFail());
+```
+
+Usually that also works and looks good.
+
+It's a bit less reliable though in more complex situations where `user` variable might change _after_ `askPassword` is called, but _before_ the visitor answers and calls `() => user.loginOk()`.
+

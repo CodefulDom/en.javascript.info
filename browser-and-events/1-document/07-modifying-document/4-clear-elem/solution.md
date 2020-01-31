@@ -1,0 +1,34 @@
+# solution
+
+First, let's see how _not_ to do it:
+
+```javascript
+function clear(elem) {
+  for (let i=0; i < elem.childNodes.length; i++) {
+      elem.childNodes[i].remove();
+  }
+}
+```
+
+That won't work, because the call to `remove()` shifts the collection `elem.childNodes`, so elements start from the index `0` every time. But `i` increases, and some elements will be skipped.
+
+The `for..of` loop also does the same.
+
+The right variant could be:
+
+```javascript
+function clear(elem) {
+  while (elem.firstChild) {
+    elem.firstChild.remove();
+  }
+}
+```
+
+And also there's a simpler way to do the same:
+
+```javascript
+function clear(elem) {
+  elem.innerHTML = '';
+}
+```
+
