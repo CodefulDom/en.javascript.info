@@ -4,7 +4,7 @@ description: Welcome to Web Engineering Bootcamp
 
 # The Modern JavaScript Tutorial
 
-The JavaScript portion of the course comes from: [https://javascript.info](https://javascript.info).
+The JavaScript portion of the course comes from: [https://javascript.info](https://javascript.info). As we add parts on I will make note of where the resources came from.
 
 ## Structure
 
