@@ -101,6 +101,7 @@ Backticks are "extended functionality" quotes. They allow us to embed variables 
 ```javascript
 let name = 'John'
 console.log(`Hello, ${name}`) // Hello, John
+console.log(`The sum of 1 + 2 = ${1+2}`) // The sum of 1 + 2 = 3
 ```
 
 ```text
