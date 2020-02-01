@@ -7,7 +7,8 @@ For instance: `subject:'01:32:54:67:89:AB'`.
 Write a regexp that checks whether a string is MAC-address.
 
 Usage:
-```js
+
+```javascript
 let regexp = /your regexp/;
 
 alert( regexp.test('01:32:54:67:89:AB') ); // true
@@ -18,3 +19,4 @@ alert( regexp.test('01:32:54:67:89') ); // false (5 numbers, must be 6)
 
 alert( regexp.test('01:32:54:67:89:ZZ') ) // false (ZZ ad the end)
 ```
+

@@ -1,4 +1,4 @@
-# Alternation (OR) |
+# Alternation \(OR\) \|
 
 Alternation is the term in regular expression that is actually a simple "OR".
 
@@ -10,14 +10,13 @@ The corresponding regexp: `pattern:html|php|java(script)?`.
 
 A usage example:
 
-```js run
-let regexp = /html|php|css|java(script)?/gi;
+\`\`\`js run let regexp = /html\|php\|css\|java\(script\)?/gi;
 
 let str = "First HTML appeared, then CSS, then JavaScript";
 
-alert( str.match(regexp) ); // 'HTML', 'CSS', 'JavaScript'
-```
+alert\( str.match\(regexp\) \); // 'HTML', 'CSS', 'JavaScript'
 
+```text
 We already saw a similar thing -- square brackets. They allow to choose between multiple characters, for instance `pattern:gr[ae]y` matches `match:gray` or `match:grey`.
 
 Square brackets allow only characters or character sets. Alternation allows any expressions. A regexp `pattern:A|B|C` means one of expressions `A`, `B` or `C`.
@@ -52,11 +51,9 @@ If we glue minutes and seconds together, we get the pattern: `pattern:[01]\d|2[0
 We're almost done, but there's a problem. The alternation `pattern:|` now happens to be between `pattern:[01]\d` and `pattern:2[0-3]:[0-5]\d`.
 
 That is: minutes are added to the second alternation variant, here's a clear picture:
-
-```
-[01]\d  |  2[0-3]:[0-5]\d
 ```
 
+```text
 That pattern looks for `pattern:[01]\d` or `pattern:2[0-3]:[0-5]\d`.
 
 But that's wrong, the alternation should only be used in the "hours" part of the regular expression, to allow `pattern:[01]\d` OR `pattern:2[0-3]`. Let's correct that by enclosing "hours" into parentheses: `pattern:([01]\d|2[0-3]):[0-5]\d`.
@@ -68,3 +65,4 @@ let regexp = /([01]\d|2[0-3]):[0-5]\d/g;
 
 alert("00:00 10:10 23:59 25:99 1:2".match(regexp)); // 00:00,10:10,23:59
 ```
+

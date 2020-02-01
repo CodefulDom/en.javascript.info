@@ -12,12 +12,11 @@ The syntax is: `pattern:X(?=Y)`, it means "look for `pattern:X`, but match only 
 
 For an integer number followed by `subject:€`, the regexp will be `pattern:\d+(?=€)`:
 
-```js run
-let str = "1 turkey costs 30€";
+\`\`\`js run let str = "1 turkey costs 30€";
 
-alert( str.match(/\d+(?=€)/) ); // 30, the number 1 is ignored, as it's not followed by €
-```
+alert\( str.match\(/\d+\(?=€\)/\) \); // 30, the number 1 is ignored, as it's not followed by €
 
+```text
 Please note: the lookahead is merely a test, the contents of the parentheses `pattern:(?=...)` is not included in the result `match:30`.
 
 When we look for `pattern:X(?=Y)`, the regular expression engine finds `pattern:X` and then checks if there's `pattern:Y` immediately after it. If it's not so, then the potential match is skipped, and the search continues.
@@ -51,12 +50,11 @@ For that, a negative lookahead can be applied.
 
 The syntax is: `pattern:X(?!Y)`, it means "search `pattern:X`, but only if not followed by `pattern:Y`".
 
-```js run
-let str = "2 turkeys cost 60€";
+\`\`\`js run let str = "2 turkeys cost 60€";
 
-alert( str.match(/\d+(?!€)/) ); // 2 (the price is skipped)
-```
+alert\( str.match\(/\d+\(?!€\)/\) \); // 2 \(the price is skipped\)
 
+```text
 ## Lookbehind
 
 Lookahead allows to add a condition for "what follows".
@@ -78,12 +76,11 @@ alert( str.match(/(?<=\$)\d+/) ); // 30 (skipped the sole number)
 
 And, if we need the quantity -- a number, not preceded by `subject:$`, then we can use a negative lookbehind `pattern:(?<!\$)\d+`:
 
-```js run
-let str = "2 turkeys cost $60";
+\`\`\`js run let str = "2 turkeys cost $60";
 
-alert( str.match(/(?<!\$)\d+/) ); // 2 (skipped the price)
-```
+alert\( str.match\(/\(?&lt;!$\)\d+/\) \); // 2 \(skipped the price\)
 
+```text
 ## Capturing groups
 
 Generally, the contents inside lookaround parentheses does not become a part of the result.
@@ -103,28 +100,28 @@ alert( str.match(regexp) ); // 30, €
 
 And here's the same for lookbehind:
 
-```js run
-let str = "1 turkey costs $30";
-let regexp = /(?<=(\$|£))\d+/;
+\`\`\`js run let str = "1 turkey costs $30"; let regexp = /\(?&lt;=\($\|£\)\)\d+/;
 
-alert( str.match(regexp) ); // 30, $
-```
+alert\( str.match\(regexp\) \); // 30, $
+
+\`\`\`
 
 ## Summary
 
-Lookahead and lookbehind (commonly referred to as "lookaround") are useful when we'd like to match something depending on the context before/after it.
+Lookahead and lookbehind \(commonly referred to as "lookaround"\) are useful when we'd like to match something depending on the context before/after it.
 
 For simple regexps we can do the similar thing manually. That is: match everything, in any context, and then filter by context in the loop.
 
-Remember, `str.match` (without flag `pattern:g`) and `str.matchAll` (always) return matches as arrays with `index` property, so we know where exactly in the text it is, and can check the context.
+Remember, `str.match` \(without flag `pattern:g`\) and `str.matchAll` \(always\) return matches as arrays with `index` property, so we know where exactly in the text it is, and can check the context.
 
 But generally lookaround is more convenient.
 
 Lookaround types:
 
-| Pattern            | type             | matches |
-|--------------------|------------------|---------|
-| `X(?=Y)`   | Positive lookahead | `pattern:X` if followed by `pattern:Y` |
-| `X(?!Y)`   | Negative lookahead | `pattern:X` if not followed by `pattern:Y` |
-| `(?<=Y)X` |  Positive lookbehind | `pattern:X` if after `pattern:Y` |
+| Pattern | type | matches |
+| :--- | :--- | :--- |
+| `X(?=Y)` | Positive lookahead | `pattern:X` if followed by `pattern:Y` |
+| `X(?!Y)` | Negative lookahead | `pattern:X` if not followed by `pattern:Y` |
+| `(?<=Y)X` | Positive lookbehind | `pattern:X` if after `pattern:Y` |
 | `(?<!Y)X` | Negative lookbehind | `pattern:X` if not after `pattern:Y` |
+

@@ -1,16 +1,16 @@
+# solution
 
 The first idea can be to list the languages with `|` in-between.
 
 But that doesn't work right:
 
-```js run
-let regexp = /Java|JavaScript|PHP|C|C\+\+/g;
+\`\`\`js run let regexp = /Java\|JavaScript\|PHP\|C\|C++/g;
 
 let str = "Java, JavaScript, PHP, C, C++";
 
-alert( str.match(regexp) ); // Java,Java,PHP,C,C
-```
+alert\( str.match\(regexp\) \); // Java,Java,PHP,C,C
 
+```text
 The regular expression engine looks for alternations one-by-one. That is: first it checks if we have  `match:Java`, otherwise -- looks for `match:JavaScript` and so on.
 
 As a result, `match:JavaScript` can never be found, just because `match:Java` is checked first.
@@ -31,3 +31,4 @@ let str = "Java, JavaScript, PHP, C, C++";
 
 alert( str.match(regexp) ); // Java,JavaScript,PHP,C,C++
 ```
+

@@ -1,13 +1,14 @@
+# task
+
 importance: 5
 
----
+## Animate the flying plane \(CSS\)
 
-# Animate the flying plane (CSS)
+Modify the solution of the previous task &lt;info:task/animate-logo-css&gt; to make the plane grow more than it's original size 400x240px \(jump out\), and then return to that size.
 
-Modify the solution of the previous task <info:task/animate-logo-css> to make the plane grow more than it's original size 400x240px (jump out), and then return to that size.
+Here's how it should look \(click on the plane\):
 
-Here's how it should look (click on the plane):
-
-[iframe src="solution" height=350]
+\[iframe src="solution" height=350\]
 
 Take the solution of the previous task as the source.
+
