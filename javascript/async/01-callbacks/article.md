@@ -1,17 +1,15 @@
-# Introduction: callbacks
+# Introduction: Callbacks
 
-\`\`\`warn header="We use browser methods in examples here" To demonstrate the use of callbacks, promises and other abstract concepts, we'll be using some browser methods: specifically, loading scripts and performing simple document manipulations.
+{% hint style="danger" %}
+**We use browser methods in examples here" To demonstrate the use of callbacks, promises and other abstract concepts, we'll be using some browser methods: specifically, loading scripts and performing simple document manipulations.**
+{% endhint %}
 
 If you're not familiar with these methods, and their usage in the examples is confusing, you may want to read a few chapters from the [next part](https://github.com/CodefulDom/en.javascript.info/tree/a035351fcfceb747760a1d9bd2c652f624999a4a/document/README.md) of the tutorial.
 
 Although, we'll try to make things clear anyway. There won't be anything really complex browser-wise.
 
-
-
 ```javascript
 
-
-Take a look at the function `loadScript(src)`, that loads a script with the given `src`:
 function loadScript(src) {
   // creates a <script> tag and append it to the page
   // this causes the script with given src to start loading and run when complete
@@ -61,10 +59,7 @@ Let's add a `callback` function as a second argument to `loadScript` that should
 function loadScript(src, *!*callback*/!*) {
   let script = document.createElement('script');
   script.src = src;
-
-*!*
   script.onload = () => callback(script);
-*/!*
 
   document.head.append(script);
 }
