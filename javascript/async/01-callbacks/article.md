@@ -6,16 +6,12 @@ If you're not familiar with these methods, and their usage in the examples is co
 
 Although, we'll try to make things clear anyway. There won't be anything really complex browser-wise.
 
-```text
-Many actions in JavaScript are *asynchronous*. In other words, we initiate them now, but they finish later.
 
-For instance, we can schedule such actions using `setTimeout`.
 
-There are other real-world examples of asynchronous actions, e.g. loading scripts and modules (we'll cover them in later chapters).
+```javascript
+
 
 Take a look at the function `loadScript(src)`, that loads a script with the given `src`:
-
-```js
 function loadScript(src) {
   // creates a <script> tag and append it to the page
   // this causes the script with given src to start loading and run when complete
