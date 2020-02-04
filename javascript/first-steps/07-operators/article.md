@@ -36,8 +36,8 @@ Usually, the plus operator `+` sums numbers.
 But, if the binary `+` is applied to strings, it merges \(concatenates\) them:
 
 ```javascript
-let s = "my" + "string";
-alert(s); // mystring
+let s = "my" + "string"
+console.log(s) // mystring
 ```
 
 Note that if one of the operands is a string, the other one is converted to a string too.
@@ -45,7 +45,8 @@ Note that if one of the operands is a string, the other one is converted to a st
 For example:
 
 ```javascript
-alert( '1' + 2 ); // "12" alert( 2 + '1' ); // "21"
+console.log('1' + 2) // "12" 
+console.log(2 + '1') // "21"
 ```
 
 See, it doesn't matter whether the first operand is a string or the second one. The rule is simple: if either operand is a string, the other one is converted into a string as well.
@@ -53,7 +54,7 @@ See, it doesn't matter whether the first operand is a string or the second one. 
 However, note that operations run from left to right. If there are two numbers followed by a string, the numbers will be added before being converted to a string:
 
 ```javascript
-alert(2 + 2 + '1' ); // "41" and not "221"
+console.log(2 + 2 + '1') // "41" and not "221"
 ```
 
 String concatenation and conversion is a special feature of the binary plus `+`. Other arithmetic operators work only with numbers and always convert their operands to numbers.
@@ -61,7 +62,8 @@ String concatenation and conversion is a special feature of the binary plus `+`.
 For instance, subtraction and division:
 
 ```javascript
-alert( 2 - '1' ); // 1 alert( '6' / '2' ); // 3
+console.log(2 - '1') // 1 
+console.log('6' / '2') // 3
 ```
 
 ### Numeric conversion, unary +
@@ -72,17 +74,16 @@ The unary plus or, in other words, the plus operator `+` applied to a single val
 
 ```javascript
 // No effect on numbers
-let x = 1;
-alert( +x ); // 1
+let x = 1
+console.log(+x) // 1
 
-let y = -2;
-alert( +y ); // -2
+let y = -2
+console.log(+y) // -2
 
-*!*
+
 // Converts non-numbers
-alert( +true ); // 1
-alert( +"" );   // 0
-*/!*
+console.log(+true) // 1
+console.log(+"")  // 0
 ```
 
 It actually does the same thing as `Number(...)`, but is shorter.
@@ -92,29 +93,30 @@ The need to convert strings to numbers arises very often. For example, if we are
 The binary plus would add them as strings:
 
 ```javascript
-let apples = "2"; let oranges = "3"
+let apples = "2"
+let oranges = "3"
 ```
 
 ```javascript
-alert( apples + oranges ); // "23", the binary plus concatenates strings
+console.log(apples + oranges) // "23", the binary plus concatenates strings
 ```
 
 If we want to treat them as numbers, we need to convert and then sum them:
 
 ```javascript
-let apples = "2";
-let oranges = "3";
+let apples = "2"
+let oranges = "3"
 
 // both values converted to numbers before the binary plus
-alert( +apples + +oranges ); // 5
+console.log(+apples + +oranges) // 5
 
 // the longer variant
-// alert( Number(apples) + Number(oranges) ); // 5
+// console.log(Number(apples) + Number(oranges)) // 5
 ```
 
 From a mathematician's standpoint, the abundance of pluses may seem strange. But from a programmer's standpoint, there's nothing special: unary pluses are applied first, they convert strings to numbers, and then the binary plus sums them up.
 
-Why are unary pluses applied to values before the binary ones? As we're going to see, that's because of their _higher precedence_.
+Why are unary `+` applied to values before the binary ones? As we're going to see, that's because of their _higher precedence_.
 
 ## Operator precedence
 
@@ -147,16 +149,15 @@ Let's note that an assignment `=` is also an operator. It is listed in the prece
 That's why, when we assign a variable, like `x = 2 * 2 + 1`, the calculations are done first and then the `=` is evaluated, storing the result in `x`.
 
 ```javascript
-let x = 2 * 2 + 1;
+let x = 2 * 2 + 1
 
-console.log(x); // 5
+console.log(x) // 5
 ```
 
 It is possible to chain assignments:
 
 ```javascript
-let a, b, c;
-! a = b = c = 2 + 2; /!
+let a, b, c
 ```
 
 `console.log(a) // 4   
@@ -172,13 +173,13 @@ The call `x = value` writes the `value` into `x` _and then returns it_.
 Here's a demo that uses an assignment as part of a more complex expression:
 
 ```javascript
-let a = 1;
-let b = 2;
+let a = 1
+let b = 2
 
-let c = 3 - (a = b + 1);
+let c = 3 - (a = b + 1)
 
-alert( a ); // 3
-alert( c ); // 0
+console.log( a ) // 3
+console.log( c ) // 0
 ```
 
 In the example above, the result of expression `(a = b + 1)` is the value which was assigned to `a` \(that is `3`\). It is then used for further evaluations.
@@ -194,9 +195,9 @@ The result of `a % b` is the remainder of the integer division of `a` by `b`.
 For instance:
 
 ```javascript
-alert(5 % 2) // 1 is a remainder of 5 divided by 2
-alert(8 % 3) // 2 is a remainder of 8 divided by 3
-alert(6 % 3) // 0 is a remainder of 6 divided by 3
+console.log(5 % 2) // 1 is a remainder of 5 divided by 2
+console.log(8 % 3) // 2 is a remainder of 8 divided by 3
+console.log(6 % 3) // 0 is a remainder of 6 divided by 3
 ```
 
 ### Exponentiation
@@ -206,15 +207,15 @@ The exponentiation operator `**` is a recent addition to the language.
 For a natural number `b`, the result of `a ** b` is `a` multiplied by itself `b` times.
 
 ```javascript
-console.log(2 ** 2); // 4  (2 * 2)
-console.log(2 ** 3); // 8  (2 * 2 * 2)
-console.log(2 ** 4); // 16 (2 * 2 * 2 * 2)
+console.log(2 ** 2) // 4  (2 * 2)
+console.log(2 ** 3) // 8  (2 * 2 * 2)
+console.log(2 ** 4) // 16 (2 * 2 * 2 * 2)
 ```
 
 ```javascript
 // The operator works for non-integer numbers as well.
-alert( 4 ** (1/2) ); // 2 (power of 1/2 is the same as a square root, that's maths)
-alert( 8 ** (1/3) ); // 2 (power of 1/3 is the same as a cubic root)
+console.log(4 ** (1/2)) // 2 (power of 1/2 is the same as a square root, that's maths)
+console.log(8 ** (1/3)) // 2 (power of 1/3 is the same as a cubic root)
 ```
 
 ### Increment/Decrement
@@ -225,14 +226,14 @@ So, there are special operators for it:
 
 ```javascript
 let counter = 2
-counter++;        // works the same as counter = counter + 1, but is shorter
+counter++ // works the same as counter = counter + 1, but is shorter
 console.log(counter) // 3
 ```
 
 ### **Decrement** - Decrease value by 1
 
 ```javascript
-let counter = 2;
+let counter = 2
 counter-- // works the same as counter = counter - 1, but is shorter
 console.log(counter) // 1
 ```
@@ -254,48 +255,48 @@ Let's clarify. As we know, all operators return a value. Increment/decrement is 
 To see the difference, here's an example:
 
 ```javascript
-let counter = 1;
-let a = ++counter;
+let counter = 1
+let a = ++counter
 
 console.log(a)
 ```
 
-In the line `(*)`, the _prefix_ form `++counter` increments `counter` and returns the new value, `2`. So, the `alert` shows `2`.
+In the line `(*)`, the _prefix_ form `++counter` increments `counter` and returns the new value, `2`. So, the `console.log()` shows `2`.
 
 Now, let’s use the postfix form:
 
 ```javascript
-let counter = 1;
-let a = counter++; // (*) changed ++counter to counter++
+let counter = 1
+let a = counter++ // (*) changed ++counter to counter++
 
-alert(a); // 1
+console.log(a) // 1
 ```
 
-In the line `(*)`, the _postfix_ form `counter++` also increments `counter` but returns the _old_ value \(prior to increment\). So, the `alert` shows `1`.
+In the line `(*)`, the _postfix_ form `counter++` also increments `counter` but returns the _old_ value \(prior to increment\). So, the `console.log` shows `1`.
 
 To summarize:
 
 * If the result of increment/decrement is not used, there is no difference in which form to use:
 
 ```javascript
-let counter = 0;
-counter++;
-++counter;
-alert( counter ); // 2, the lines above did the same
+let counter = 0
+counter++
+++counter
+console.log(counter) // 2, the lines above did the same
 ```
 
 * If we’d like to increase a value _and_ immediately use the result of the operator, we need the prefix form:
 
 ```javascript
-let counter = 0;
-alert( ++counter ); // 1
+let counter = 0
+console.log(++counter) // 1
 ```
 
 * If we’d like to increment a value but use its previous value, we need the postfix form:
 
 ```javascript
-let counter = 0;
-alert( counter++ ); // 0
+let counter = 0
+console.log(counter++) // 0
 ```
 
 {% hint style="info" %}
@@ -308,15 +309,15 @@ The operators `++/--` can be used inside expressions as well. Their precedence i
 For instance:
 
 ```javascript
-let counter = 1;
-alert( 2 * ++counter ); // 4
+let counter = 1
+console.log(2 * ++counter) // 4
 ```
 
 Compare with:
 
 ```javascript
-let counter = 1;
-alert( 2 * counter++ ); // 2, because counter++ returns the "old" value
+let counter = 1
+console.log(2 * counter++) // 2, because counter++ returns the "old" value
 ```
 
 Though technically okay, such notation usually makes code less readable. One line does multiple things – not good.
@@ -326,9 +327,9 @@ While reading code, a fast “vertical” eye-scan can easily miss something lik
 We advise a style of “one line – one action”:
 
 ```javascript
-let counter = 1;
-alert( 2 * counter );
-counter++;
+let counter = 1
+console.log(2 * counter)
+counter++
 ```
 {% endhint %}
 
@@ -350,32 +351,32 @@ The list of operators:
 
 These operators are used very rarely. To understand them, we need to delve into low-level number representation and it would not be optimal to do that right now, especially since we won't need them any time soon. If you're curious, you can read the [Bitwise Operators](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators) article on MDN. It would be more practical to do that when a real need arises.
 
-```text
-let n = 2;
+```javascript
+let n = 2
 
-n *= 3 + 5;
+n *= 3 + 5
 
-alert( n ); // 16  (right part evaluated first, same as n *= 8)
+console.log(n) // 16  (right part evaluated first, same as n *= 8)
 ```
 
 Such operators have the same precedence as a normal assignment, so they run after most other calculations:
 
 Short “modify-and-assign” operators exist for all arithmetical and bitwise operators: `/=`, `-=`, etc.
 
-```text
-let n = 2;
-n += 5; // now n = 7 (same as n = n + 5)
-n *= 2; // now n = 14 (same as n = n * 2)
+```javascript
+let n = 2
+n += 5 // now n = 7 (same as n = n + 5)
+n *= 2 // now n = 14 (same as n = n * 2)
 
-alert( n ); // 14
+console.log(n) // 14
 ```
 
 This notation can be shortened using the operators `+=` and `*=`:
 
-```text
-let n = 2;
-n = n + 5;
-n = n * 2;
+```javascript
+let n = 2
+n = n + 5
+n = n * 2
 ```
 
 For example:
@@ -413,7 +414,7 @@ let n = 2
 
 n *= 3 + 5
 
-alert(n) // 16  (right part evaluated first, same as n *= 8)
+console.log(n) // 16  (right part evaluated first, same as n *= 8)
 ```
 
 ## Comma
@@ -427,7 +428,7 @@ For example:
 ```javascript
 let a = (1 + 2, 3 + 4)
 
-alert(a) // 7 (the result of 3 + 4)
+console.log(a) // 7 (the result of 3 + 4)
 ```
 
 {% hint style="info" %}
