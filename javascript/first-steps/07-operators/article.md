@@ -165,10 +165,10 @@ console.log(b) // 4
 console.log(c) // 4`
 
 {% hint style="warning" %}
-**The assignment operator `\"=\"` returns a value" An operator always returns a value. That's obvious for most of them like addition `+` or multiplication `*`. But the assignment operator follows this rule too.**
+**The assignment operator `=` returns a value An operator always returns a value. That's obvious for most of them like addition `+` or multiplication `*`. But the assignment operator follows this rule too.**
 {% endhint %}
 
-The call `x = value` writes the `value` into `x` _and then returns it_.
+The **expression** `x = value` writes the `value` into `x` _and then returns it_.
 
 Here's a demo that uses an assignment as part of a more complex expression:
 
