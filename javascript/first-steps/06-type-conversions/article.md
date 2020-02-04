@@ -87,16 +87,14 @@ For instance:
 
 alert\( Boolean\("hello"\) \); // true alert\( Boolean\(""\) \); // false
 
-```text
-````warn header="Please note: the string with zero `\"0\"` is `true`"
-Some languages (namely PHP) treat `"0"` as `false`. But in JavaScript, a non-empty string is always `true`.
+{% hint style="danger" %}
+**Please note: the string with zero `\"0\"` is `true`" Some languages \(namely PHP\) treat `"0"` as `false`. But in JavaScript, a non-empty string is always `true`.**
+{% endhint %}
 
-```js run
+```javascript
 alert( Boolean("0") ); // true
 alert( Boolean(" ") ); // spaces, also true (any non-empty string is true)
 ```
-
-\`\`\`\`
 
 ## Summary
 
