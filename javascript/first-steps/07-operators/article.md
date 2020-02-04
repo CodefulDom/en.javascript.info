@@ -344,7 +344,7 @@ The list of operators:
 * AND \( `&` \)
 * OR \( `|` \)
 * XOR \( `^` \)
-* NOT \( `~` \)
+* NOT \( `!` \)
 * LEFT SHIFT \( `<<` \)
 * RIGHT SHIFT \( `>>` \)
 * ZERO-FILL RIGHT SHIFT \( `>>>` \)
