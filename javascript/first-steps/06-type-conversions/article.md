@@ -6,10 +6,9 @@ For example, `alert` automatically converts any value to a string to show it. Ma
 
 There are also cases when we need to explicitly convert a value to the expected type.
 
-\`\`\`smart header="Not talking about objects yet" In this chapter, we won't cover objects. Instead, we'll study primitives first. Later, after we learn about objects, we'll see how object conversion works in the chapter .
+In this chapter, we won't cover objects. Instead, we'll study primitives first. Later, after we learn about objects, we'll see how object conversion works in the chapter .
 
-```text
-## String Conversion
+### String Conversion
 
 String conversion happens when we need the string form of a value.
 
@@ -17,14 +16,12 @@ For example, `alert(value)` does it to show the value.
 
 We can also call the `String(value)` function to convert a value to a string:
 
-```js run
+```javascript
 let value = true;
 alert(typeof value); // boolean
-
-*!*
 value = String(value); // now value is a string "true"
 alert(typeof value); // string
-*/!*
+
 ```
 
 String conversion is mostly obvious. A `false` becomes `"false"`, `null` becomes `"null"`, etc.
@@ -35,12 +32,13 @@ Numeric conversion happens in mathematical functions and expressions automatical
 
 For example, when division `/` is applied to non-numbers:
 
-\`\`\`js run alert\( "6" / "2" \); // 3, strings are converted to numbers
+```javascript
+alert( "6" / "2" ); // 3, strings are converted to numbers
+```
 
-```text
 We can use the `Number(value)` function to explicitly convert a `value` to a number:
 
-```js run
+```javascript
 let str = "123";
 alert(typeof str); // string
 
@@ -53,12 +51,20 @@ Explicit conversion is usually required when we read a value from a string-based
 
 If the string is not a valid number, the result of such a conversion is `NaN`. For instance:
 
-\`\`\`js run let age = Number\("an arbitrary string instead of a number"\);
+```javascript
+let age = Number("an arbitrary string instead of a number");
+```
 
-alert\(age\); // NaN, conversion failed
+```javascript
+alert(age)
+```
 
 ```text
 Numeric conversion rules:
+```
+
+```text
+
 
 | Value |  Becomes... |
 |-------|-------------|
