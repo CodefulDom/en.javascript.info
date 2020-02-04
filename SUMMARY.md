@@ -45,7 +45,7 @@
     * [07-operators](1-js/first-steps/07-operators/README.md)
       * [1-increment-order](1-js/first-steps/07-operators/1-increment-order/README.md)
         * [task](1-js/first-steps/07-operators/1-increment-order/task.md)
-        * [solution](1-js/first-steps/07-operators/1-increment-order/solution.md)
+        * [solution](javascript/first-steps/07-operators/1-increment-order/solution.md)
       * [3-primitive-conversions-questions](1-js/first-steps/07-operators/3-primitive-conversions-questions/README.md)
         * [task](1-js/first-steps/07-operators/3-primitive-conversions-questions/task.md)
         * [solution](1-js/first-steps/07-operators/3-primitive-conversions-questions/solution.md)
