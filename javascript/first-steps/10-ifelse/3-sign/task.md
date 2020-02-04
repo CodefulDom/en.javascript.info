@@ -1,7 +1,5 @@
 # task
 
-importance: 2
-
 ## Show the sign
 
 Using `if..else`, write the code which gets a number via `prompt` and then shows in `alert`:
@@ -12,5 +10,5 @@ Using `if..else`, write the code which gets a number via `prompt` and then shows
 
 In this task we assume that the input is always a number.
 
-\[demo src="if\_sign"\]
+
 

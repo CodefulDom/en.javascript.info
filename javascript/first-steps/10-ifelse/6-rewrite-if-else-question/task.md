@@ -1,7 +1,5 @@
 # task
 
-importance: 5
-
 ## Rewrite 'if..else' into '?'
 
 Rewrite `if..else` using multiple ternary operators `'?'`.

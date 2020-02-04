@@ -6,7 +6,9 @@ Any string except an empty one \(and `"0"` is not empty\) becomes `true` in the 
 
 We can run and check:
 
-\`\`\`js run if \("0"\) { alert\( 'Hello' \); }
-
-\`\`\`
+```javascript
+if ("0") {
+  console.log( 'Hello' );
+}
+```
 
