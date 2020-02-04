@@ -4,7 +4,7 @@ We know many operators from school. They are things like addition `+`, multiplic
 
 In this chapter, we’ll concentrate on aspects of operators that are not covered by school arithmetic.
 
-### [Terms: “unary”, “binary”, “operand”](https://javascript.info/operators#terms-unary-binary-operand)
+### Terms: unary, binary, operand
 
 Before we move on, let’s grasp some common terminology.
 
