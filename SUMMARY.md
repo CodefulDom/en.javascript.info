@@ -56,7 +56,7 @@
     * [08-comparison](1-js/first-steps/08-comparison/README.md)
       * [1-comparison-questions](1-js/first-steps/08-comparison/1-comparison-questions/README.md)
         * [solution](javascript/first-steps/08-comparison/1-comparison-questions/solution.md)
-        * [task](1-js/first-steps/08-comparison/1-comparison-questions/task.md)
+        * [task](javascript/first-steps/08-comparison/1-comparison-questions/task.md)
       * [Comparisons](1-js/first-steps/08-comparison/article.md)
     * [09-alert-prompt-confirm](1-js/first-steps/09-alert-prompt-confirm/README.md)
       * [1-simple-page](1-js/first-steps/09-alert-prompt-confirm/1-simple-page/README.md)
