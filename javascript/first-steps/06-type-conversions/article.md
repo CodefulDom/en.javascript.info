@@ -59,28 +59,12 @@ let age = Number("an arbitrary string instead of a number");
 alert(age)
 ```
 
-```text
-Numeric conversion rules:
-```
-
-```text
-
-
-| Value |  Becomes... |
-|-------|-------------|
-|`undefined`|`NaN`|
-|`null`|`0`|
-|<code>true&nbsp;and&nbsp;false</code> | `1` and `0` |
-| `string` | Whitespaces from the start and end are removed. If the remaining string is empty, the result is `0`. Otherwise, the number is "read" from the string. An error gives `NaN`. |
-
-Examples:
-
-```js run
-alert( Number("   123   ") ); // 123
-alert( Number("123z") );      // NaN (error reading a number at "z")
-alert( Number(true) );        // 1
-alert( Number(false) );       // 0
-```
+| Value | Becomes |
+| :--- | :--- |
+| `undefined` | `NaN` |
+| `null` | 0 |
+| `true` or `false` | 1 or 2 respectively |
+| `string` | Whitespaces from the start and end are removed. If the remaining string is empty, the result is `0`. Otherwise, the number is “read” from the string. An error gives `NaN`. |
 
 Please note that `null` and `undefined` behave differently here: `null` becomes zero while `undefined` becomes `NaN`.
 
@@ -103,16 +87,14 @@ For instance:
 
 alert\( Boolean\("hello"\) \); // true alert\( Boolean\(""\) \); // false
 
-```text
-````warn header="Please note: the string with zero `\"0\"` is `true`"
-Some languages (namely PHP) treat `"0"` as `false`. But in JavaScript, a non-empty string is always `true`.
+{% hint style="danger" %}
+**Please note: the string with zero `\"0\"` is `true`" Some languages \(namely PHP\) treat `"0"` as `false`. But in JavaScript, a non-empty string is always `true`.**
+{% endhint %}
 
-```js run
+```javascript
 alert( Boolean("0") ); // true
 alert( Boolean(" ") ); // spaces, also true (any non-empty string is true)
 ```
-
-\`\`\`\`
 
 ## Summary
 

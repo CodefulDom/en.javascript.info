@@ -18,8 +18,6 @@ undefined + 1 = NaN // (6)
 " \t \n" - 2 = -2 // (7)
 ```
 
-\`\`\`
-
 1. The addition with a string `"" + 1` converts `1` to a string: `"" + 1 = "1"`, and then we have `"1" + 0`, the same rule is applied.
 2. The subtraction `-` \(like most math operations\) only works with numbers, it converts an empty string `""` to `0`.
 3. The addition with a string appends the number `5` to the string.
