@@ -1,8 +1,14 @@
 # solution
 
-\`\`\`js no-beautify 5 &gt; 4 → true "apple" &gt; "pineapple" → false "2" &gt; "12" → true undefined == null → true undefined === null → false null == "\n0\n" → false null === +"\n0\n" → false
-
-\`\`\`
+```javascript
+5 > 4 → true
+"apple" > "pineapple" → false
+"2" > "12" → true
+undefined == null → true
+undefined === null → false
+null == "\n0\n" → false
+null === +"\n0\n" → false
+```
 
 Some of the reasons:
 
