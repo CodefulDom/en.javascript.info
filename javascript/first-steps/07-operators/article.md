@@ -2,26 +2,30 @@
 
 We know many operators from school. They are things like addition `+`, multiplication `*`, subtraction `-`, and so on.
 
-In this chapter, we'll concentrate on aspects of operators that are not covered by school arithmetic.
+In this chapter, we’ll concentrate on aspects of operators that are not covered by school arithmetic.
 
-## Terms: "unary", "binary", "operand"
+### [Terms: “unary”, “binary”, “operand”](https://javascript.info/operators#terms-unary-binary-operand)
 
-Before we move on, let's grasp some common terminology.
+Before we move on, let’s grasp some common terminology.
 
-* _An operand_ -- is what operators are applied to. For instance, in the multiplication of `5 * 2` there are two operands: the left operand is `5` and the right operand is `2`. Sometimes, people call these "arguments" instead of "operands".
+* _An operand_ – is what operators are applied to. For instance, in the multiplication of `5 * 2` there are two operands: the left operand is `5` and the right operand is `2`. Sometimes, people call these “arguments” instead of “operands”.
 * An operator is _unary_ if it has a single operand. For example, the unary negation `-` reverses the sign of a number:
 
-  \`\`\`js run let x = 1;
+```javascript
+let x = 1
 
-  _!_ x = -x; _/!_ alert\( x \); // -1, unary negation was applied \`\`\`
+x = -x
+console.log(x) // -1, unary negation was applied
+```
 
-* An operator is _binary_ if it has two operands. The same minus exists in binary form as well:
+An operator is _binary_ if it has two operands. The same minus exists in binary form as well:
 
-  \`\`\`js run no-beautify let x = 1, y = 3; alert\( y - x \); // 2, binary minus subtracts values
+```javascript
+let x = 1, y = 3
+console.log(y - x) // 2, binary minus subtracts values
+```
 
-  \`\`\`
-
-  Formally, in the examples above we have two different operators that share the same symbol: the negation operator, a unary operator that reverses the sign, and the subtraction operator, a binary operator that subtracts one number from another.
+Formally, in the examples above we have two different operators that share the same symbol: the negation operator, a unary operator that reverses the sign, and the subtraction operator, a binary operator that subtracts one number from another.
 
 ## String concatenation, binary +
 
