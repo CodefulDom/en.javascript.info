@@ -6,8 +6,6 @@ To do that, we can use the `if` statement and the conditional operator `?`, that
 
 ## The "if" statement
 
-
-
 The `if(...)` statement evaluates a condition in parentheses and, if the result is `true`, executes a block of code.
 
 For example:
@@ -67,8 +65,6 @@ if (cond) {
 ```
 
 ## The "else" clause
-
-
 
 The `if` statement may contain an optional “else” block. It executes when the condition is false.
 

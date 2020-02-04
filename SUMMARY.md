@@ -64,7 +64,7 @@
         * [task](1-js/first-steps/09-alert-prompt-confirm/1-simple-page/task.md)
       * [Interaction: alert, prompt, confirm](1-js/first-steps/09-alert-prompt-confirm/article.md)
     * [10-ifelse](1-js/first-steps/10-ifelse/README.md)
-      * [Conditional operators: if, '?'](1-js/first-steps/10-ifelse/article.md)
+      * [Conditional operators: if, '?'](javascript/first-steps/10-ifelse/article.md)
       * [6-rewrite-if-else-question](1-js/first-steps/10-ifelse/6-rewrite-if-else-question/README.md)
         * [task](javascript/first-steps/10-ifelse/6-rewrite-if-else-question/task.md)
         * [solution](1-js/first-steps/10-ifelse/6-rewrite-if-else-question/solution.md)
