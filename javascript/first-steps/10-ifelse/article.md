@@ -199,7 +199,7 @@ if (age < 3) {
 }
 ```
 
-### [Non-traditional use of ‘?’](https://javascript.info/ifelse#non-traditional-use-of)
+### Non-traditional use of ‘?’
 
 Sometimes the question mark `?` is used as a replacement for `if`:
 
