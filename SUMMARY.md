@@ -111,7 +111,7 @@
       * [Logical operators](1-js/first-steps/11-logical-operators/article.md)
     * [12-while-for](1-js/first-steps/12-while-for/README.md)
       * [7-list-primes](1-js/first-steps/12-while-for/7-list-primes/README.md)
-        * [solution](1-js/first-steps/12-while-for/7-list-primes/solution.md)
+        * [solution](javascript/first-steps/12-while-for/7-list-primes/solution.md)
         * [task](1-js/first-steps/12-while-for/7-list-primes/task.md)
       * [6-repeat-until-correct](1-js/first-steps/12-while-for/6-repeat-until-correct/README.md)
         * [solution](1-js/first-steps/12-while-for/6-repeat-until-correct/solution.md)

@@ -14,15 +14,11 @@ For each i in the interval {
 
 The code using a label:
 
-\`\`\`js run let n = 10;
+let n = 10;
 
 nextPrime: for \(let i = 2; i &lt;= n; i++\) { // for each i...
 
 for \(let j = 2; j &lt; i; j++\) { // look for a divisor.. if \(i % j == 0\) continue nextPrime; // not a prime, go next i }
-
-alert\( i \); // a prime }
-
-\`\`\`
 
 There's a lot of space to optimize it. For instance, we could look for the divisors from `2` to square root of `i`. But anyway, if we want to be really efficient for large intervals, we need to change the approach and rely on advanced maths and complex algorithms like [Quadratic sieve](https://en.wikipedia.org/wiki/Quadratic_sieve), [General number field sieve](https://en.wikipedia.org/wiki/General_number_field_sieve) etc.
 
